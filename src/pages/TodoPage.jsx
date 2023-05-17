@@ -64,7 +64,7 @@ const TodoPage = () => {
     });
   };
 
-  const handleToggleDown = (id) => {
+  const handleToggleDone = (id) => {
     setTodos((prevTodos) => {
       return prevTodos.map((todo) => {
         if (todo.id === id) {
@@ -73,7 +73,35 @@ const TodoPage = () => {
             isDone: !todo.isDone,
           };
         }
-        return todo
+        return todo;
+      });
+    });
+  };
+  const handleChangeMode = ({ id, isEdit }) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            isEdit,
+          };
+        }
+
+        return { ...todo, isEdit: false };
+      });
+    });
+  };
+  const handleSave = ({ id, title }) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            title,
+            isEdit: false,
+          };
+        }
+        return todo;
       });
     });
   };
@@ -87,7 +115,12 @@ const TodoPage = () => {
         onAddTodo={handleAddTodo}
         onKeyDown={handleKeyDown}
       />
-      <TodoCollection todos={todos} onToggleDone={handleToggleDown}/>
+      <TodoCollection
+        todos={todos}
+        onToggleDone={handleToggleDone}
+        onChangeMode={handleChangeMode}
+        onSave={handleSave}
+      />
       <Footer />
     </div>
   );
