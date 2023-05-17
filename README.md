@@ -24,7 +24,10 @@
     ```
     webpack compiled successfully
     ```
-
+6. The demo page via page link :
+    ```
+    http://localhost:3000/todo
+    ```
 ## Developer Tools
 
 * Node.js v18.13.0
