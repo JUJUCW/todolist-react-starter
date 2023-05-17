@@ -103,7 +103,7 @@ const StyledTaskItem = styled.div`
 
 const TodoItem = ({ todo, onToggleDone, onSave, onDelete, onChangeMode }) => {
   return (
-    <StyledTaskItem className={clsx('',{done:todo.isDone})}>
+    <StyledTaskItem className={clsx('', { done: todo.isDone })}>
       <div className="task-item-checked">
         <span className="icon icon-checked" />
       </div>
