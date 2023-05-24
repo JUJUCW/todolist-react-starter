@@ -8,6 +8,8 @@ export const login = async ({ username, password }) => {
       username,
       password,
     });
+
+    console.log(data)
     const { authToken } = data;
     if (authToken) {
       return { success: true, ...data };
