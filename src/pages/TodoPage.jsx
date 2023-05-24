@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Footer, Header, TodoCollection, TodoInput } from 'components';
-import { createTodo, getTodos, patchTodo } from '../api/todos';
+import { createTodo, deleteTodo, getTodos, patchTodo } from '../api/todos';
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
@@ -119,11 +119,16 @@ const TodoPage = () => {
         });
       });
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   };
-  const handleDelete = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  const handleDelete = async (id) => {
+    try {
+      await deleteTodo(id);
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
