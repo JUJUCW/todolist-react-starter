@@ -14,12 +14,30 @@ export const createTodo = async (payload) => {
   try {
     const { title, isDone } = payload;
     const res = await axios.post(`${baseUrl}/todos`, { title, isDone });
-    return res.data
+    return res.data;
   } catch (error) {
     console.error('[Create Todo failed]:', error);
   }
 };
 
-export const patchTodo = () => {};
+export const patchTodo = async (payload) => {
+  const { id, title, isDone } = payload;
 
-export const deleteTodo = () => {};
+  try {
+    const res = await axios.patch(`${baseUrl}/todos/${id}`, {
+      title,
+      isDone,
+    });
+    return res.data;
+  } catch (error) {
+    console.error('[Patch Todo failed]:', error);
+  }
+};
+export const deleteTodo = async (id) => {
+  try {
+    const res = await axios.delete(`${baseUrl}/todos/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log('[Delete Todo failed]:', error);
+  }
+};
