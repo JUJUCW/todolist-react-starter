@@ -1,10 +1,9 @@
 name: Deploy to GitHub pages
 
 on:
-  push:
-    branches: [record]
+  workflow_dispatch:
   pull_request:
-    branches: [record]
+    branches: [main]
 
 jobs:
   build:
