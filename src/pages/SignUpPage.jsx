@@ -29,7 +29,7 @@ const SignUpPage = () => {
     if (password.length === 0) {
       return;
     }
-    const { success, authToken } = await register({
+    const success = await register({
       username,
       email,
       password,
