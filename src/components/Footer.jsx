@@ -33,7 +33,7 @@ const StyledButton = styled.button`
 `;
 
 const Footer = ({ numOfTodos }) => {
-  const { logout } = useAuth;
+  const { logout } = useAuth();
   const handleClick = () => {
     logout();
   };
