@@ -3,11 +3,13 @@ import { Footer, Header, TodoCollection, TodoInput } from 'components';
 import { createTodo, deleteTodo, getTodos, patchTodo } from '../api/todos';
 import { checkPermission } from 'api/auth';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const navigate = useNavigate();
+  const { isAuthenticated, currentMember } = useAuth;
   const todoNumbers = todos.length;
 
   const handleChange = (value) => {
@@ -168,7 +170,7 @@ const TodoPage = () => {
   return (
     <div>
       TodoPage
-      <Header />
+      <Header username={currentMember?.name} />
       <TodoInput
         inputValue={inputValue}
         onChange={handleChange}
