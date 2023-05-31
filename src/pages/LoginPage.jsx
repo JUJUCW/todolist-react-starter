@@ -25,7 +25,10 @@ const LoginPage = () => {
       return;
     }
 
-    const { success } = await login({ username, password });
+    const success = await login({
+      username,
+      password,
+    });
     if (success) {
       Swal.fire({
         position: 'top',
